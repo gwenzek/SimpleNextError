@@ -1,0 +1,45 @@
+%YAML 1.2
+---
+scope: text.simple-errors
+
+variables:
+  filename: '([\w\d/_\.-]+)'
+
+contexts:
+  main:
+    - match: '(Error):'
+      captures:
+        1: error.level.error markup.background.red
+      push:
+        - include: quoted_error_message
+        - match: ':(\d+)'
+          captures:
+            1: constant.numeric.linenumber.error
+        - match: '{{filename}}'
+          scope: entity.name.filename.error
+        - match: $
+          pop: true
+    - match: '(Errors) in file:'
+      push:
+        - match: '{{filename}}'
+          scope: entity.name.filename.error
+          pop: true
+    - match: '^  (Error):'
+      captures:
+        1: error.level.error markup.background.red
+      push:
+        - include: quoted_error_message
+        - match: 'at line (\d+)'
+          captures:
+            1: constant.numeric.linenumber.error
+        - match: $
+          pop: true
+
+  quoted_error_message:
+    - match: "'"
+      scope: punctuation.definition.string
+      push:
+        - meta_scope: string error.message
+        - match: "'"
+          scope: punctuation.definition.string
+          pop: true

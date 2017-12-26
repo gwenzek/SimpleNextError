@@ -1,0 +1,5 @@
+{
+  "shell_cmd": "python3 /home/wzk/Github/SimpleNextError/generate_errors.py",
+  "syntax": "Packages/SimpleNextError/simple_errors.sublime-syntax",
+  "file_regex": "Error: '.*' (.+):([0-9]+)"
+}
