@@ -11,7 +11,6 @@ class SimpleNextError(WindowCommand):
     error_linenumbers = build_output.find_by_selector('constant.numeric.linenumber.error')
     next_error = select_next_error(cursor, error_linenumbers)
     error_line = build_output.line(next_error)
-    print('error_line', error_line)
 
     build_sel = build_output.sel()
     build_sel.clear()
