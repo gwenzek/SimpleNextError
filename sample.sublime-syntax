@@ -1,6 +1,12 @@
 %YAML 1.2
 ---
-scope: text.simple-errors
+# This syntax is a sample syntax supported by SimpleNextError plugin.
+# You can use this syntax as a starting point for your custom build syntax.
+# The scopes that you need to use are:
+#  - entity.name.filename.error
+#  - constant.numeric.linenumber.error
+scope: text.build.sample
+hidden: true
 
 variables:
   filename: '([\w\d/_\.-]+)'

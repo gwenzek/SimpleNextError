@@ -1,0 +1,6 @@
+{
+  "shell_cmd": "python3 $file",
+  "selector": "source.python",
+  "syntax": "Packages/SimpleNextError/sample.sublime-syntax",
+  "file_regex": "Error: '.*' (.+):([0-9]+)"
+}
