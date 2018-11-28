@@ -42,15 +42,20 @@ Once your syntax is ready, just add it under the "syntax" field in the
 
 ## Under the hood
 
-The implementation here is really naive for now, it's just a quick hack.
-It's expected to be slow on long build outputs.
+The implementation relies on the `view.find_by_selector` API and then is linear
+on the number of errors.
 
 So every time you press `ctrl+f4` the API `view.find_by_selector` is called on
 the build ouput. The `linenumber` closest to the current position in the build
 output is then selected. A `filename` is looked inside the same line, otherwise
-the first `filename` found above it is selected.
+the first `filename` found above it, is selected.
+
+## Features
+
+* Syntax based
+* Doesn't try to open files that don't exists.
 
 ## Caveats
 
-* As explained above probably slow on long outputs
-* The error is not always correctly selected in the build panel.
+* Doesn't display phantoms
+* Doesn't handle column number.
